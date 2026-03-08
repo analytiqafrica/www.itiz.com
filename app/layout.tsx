@@ -1,31 +1,9 @@
 import type { Metadata } from "next";
 import Script from "next/script";
+import { defaultMetadata } from "@/seo/metadata";
 import "./globals.css";
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://www.itiz.com"),
-  title: "Appilo - Responsive HTML 5 template",
-  description: "Awesome App for Your Modern Lifestyle.",
-  alternates: {
-    canonical: "/",
-  },
-  openGraph: {
-    title: "Appilo - Responsive HTML 5 template",
-    description: "Awesome App for Your Modern Lifestyle.",
-    url: "https://www.itiz.com",
-    siteName: "ITIZ",
-    type: "website",
-    images: [
-      {
-        url: "/img/slider-moc-2.png",
-      },
-    ],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
+export const metadata: Metadata = defaultMetadata;
 
 export default function RootLayout({
   children,
@@ -88,10 +66,8 @@ export default function RootLayout({
         <Script src="/js/jquery.easing.min.js" strategy="beforeInteractive" />
         <Script src="/js/swiper.min.js" strategy="beforeInteractive" />
         <Script src="/js/jquery.bxslider.min.js" strategy="beforeInteractive" />
-        <Script src="/js/custom.js" strategy="beforeInteractive" />
+        <Script src="/js/custom.js" strategy="lazyOnload" />
       </body>
     </html>
   );
 }
-
-

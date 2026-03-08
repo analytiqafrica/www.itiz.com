@@ -535,12 +535,13 @@ function appScreenshotCarousel () {
     }
 }
 
-// instance of fuction while Document ready event   
-jQuery(document).on('ready', function() {
+function initOnDocumentReady() {
+    if (window.__appiloReadyInitDone) return;
+    window.__appiloReadyInitDone = true;
     (function($) {
         thmMailchimp();
         thmLightBox();
-        thmCounter();        
+        thmCounter();
         contactFormValidation();
         scrollToTarget();
         thmVideoPopup();
@@ -549,22 +550,37 @@ jQuery(document).on('ready', function() {
         SmoothMenuScroll();
         toggleTabWithSwitch();
     })(jQuery);
-});
+}
 
-// instance of fuction while Window Load event
-jQuery(window).on('load', function() {
+function initOnWindowLoad() {
+    if (window.__appiloLoadInitDone) return;
+    window.__appiloLoadInitDone = true;
     (function($) {
         thmbxSlider();
-        handlePreloader()
+        handlePreloader();
         // thmScrollAnim();
         pogressbarAnim();
         thmOwlCarousel();
         galleryMasonaryLayout();
         appScreenshotCarousel();
     })(jQuery);
-});
+}
 
-// instance of fuction while Window Scroll event
+// instance of function while document ready event
+jQuery(document).on('ready', initOnDocumentReady);
+
+// instance of function while window load event
+jQuery(window).on('load', initOnWindowLoad);
+
+// fallback when script is loaded after ready/load already fired
+if (document.readyState !== 'loading') {
+    initOnDocumentReady();
+}
+if (document.readyState === 'complete') {
+    initOnWindowLoad();
+}
+
+// instance of function while window scroll event
 jQuery(window).on('scroll', function() {
     (function($) {
         stickyHeader();
