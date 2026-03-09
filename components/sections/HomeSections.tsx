@@ -7,11 +7,15 @@ export default function HomeSections() {
             <div className="col-lg-6 col-md-12">
               <div className="banner-content">
                 <h3>
-                  Awesome App for Your <br /> Modern Lifestyle
+                  Request Your Superstar <br />
+                  To Your City.
                 </h3>
                 <p>
-                  Increase productivity with a simple to-do app. app for <br />{" "}
-                  managing your personal budgets.
+                  The first of its kind - a platform connecting fans with
+                  Superstars.
+                  <br />
+                  Music, Movies, Theatre, Sports (Boxing), Stand-Up Comedy and
+                  Hangout. Experience it all, on demand.
                 </p>
                 <a href="#" className="thm-btn">
                   <span>Download App</span>
